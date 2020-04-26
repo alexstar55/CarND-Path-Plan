@@ -1,5 +1,22 @@
 # CarND-Path-Planning-Project
 Self-Driving Car Engineer Nanodegree Program
+
+### Path Planning Logic  
+I put this part first for project reviewing.  
+With data given from the simulator, we don’t need to 
+search, since ground truth frenet coordinate was given.
+The only thing we need to do is generating trajectory points
+and change lane in some reasonable way. 
+#### Decision making  
+There are two methods to consider: cost function based method and rule
+based method. I choose rule based method. Ego vehicle uses
+the position of vehicles around to decide whether to change
+lane or not. The ROI of lane change is set manully. If there are vehicles in ROI, ego
+vehicle won’t change lane. If not, then ego vehicle should change lane and
+run with max velocity.The Parameter called ROI-offset can
+make vehicle change lane more aggressively.
+#### Way point generation
+In this project, we just need to generate  small path intervals instead of merely control steering, so it's important to gennerate these smooth little move, and spline fitting is used to achieve this goal.
    
 ### Simulator.
 You can download the Term3 Simulator which contains the Path Planning Project from the [releases tab (https://github.com/udacity/self-driving-car-sim/releases/tag/T3_v1.2).  
